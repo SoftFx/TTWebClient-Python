@@ -24,7 +24,7 @@ class TickTraderWebClient:
         self.__web_api_key = web_api_key
         self.__web_api_secret = web_api_secret
 
-    def get_public_trade_session_status(self):
+    def get_public_trade_session(self):
         """
         Get public trade session information
         """
@@ -118,6 +118,30 @@ class TickTraderWebClient:
         symbol = urllib.parse.quote_plus(urllib.parse.quote_plus(symbol))
         client = self.__create_http_client()
         client.request('GET', '/api/v1/public/level2/{0}'.format(symbol), None, self.__get_http_public_headers())
+        response = json.loads(self.__decode_response(client.getresponse()))
+        return response
+
+    def get_account(self):
+        """
+        Get account information
+        """
+        client = self.__create_http_client()
+        method = 'GET'
+        url_relative = '/api/v1/account'
+        url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
+        client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
+        response = json.loads(self.__decode_response(client.getresponse()))
+        return response
+
+    def get_trade_session(self):
+        """
+        Get trade session information
+        """
+        client = self.__create_http_client()
+        method = 'GET'
+        url_relative = '/api/v1/tradesession'
+        url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
+        client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
         response = json.loads(self.__decode_response(client.getresponse()))
         return response
 
@@ -228,30 +252,6 @@ class TickTraderWebClient:
         client = self.__create_http_client()
         method = 'GET'
         url_relative = '/api/v1/level2/{0}'.format(symbol)
-        url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
-        client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
-        response = json.loads(self.__decode_response(client.getresponse()))
-        return response
-
-    def get_trade_session_status(self):
-        """
-        Get trade session information
-        """
-        client = self.__create_http_client()
-        method = 'GET'
-        url_relative = '/api/v1/tradesession'
-        url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
-        client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
-        response = json.loads(self.__decode_response(client.getresponse()))
-        return response
-
-    def get_account(self):
-        """
-        Get account information
-        """
-        client = self.__create_http_client()
-        method = 'GET'
-        url_relative = '/api/v1/account'
         url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
         client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
         response = json.loads(self.__decode_response(client.getresponse()))

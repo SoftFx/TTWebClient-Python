@@ -180,9 +180,9 @@ print('{0} trade with type {1} by symbol {2}: {3}'.format(trade['Id'],
 ## Access to account trade history
 ```python
 iterations = 3
-request = {'TimestampTo': TickTraderWebClient.get_timestamp(), 'RequestDirection': 'Backward'}
+request = {'TimestampTo': TickTraderWebClient.get_timestamp(), 'RequestDirection': 'Backward', 'RequestPageSize':10}
 
-# Try to get trade history from now to the past. Request is limited to 300 records!
+# Try to get trade history from now to the past. Request is limited to 30 records!
 while iterations > 0:
     report = client.get_trade_history(request)
     for record in report['Records']:

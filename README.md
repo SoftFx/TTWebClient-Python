@@ -3,7 +3,7 @@ Python Web API client for TickTrader
 
 ## Creating Web API client
 ```python
-web_api_address = 'tpdemo.fxopen.com'
+web_api_address = 'https://tpdemo.fxopen.com:5020'
 web_api_id = '8bd43d1f-39a4-45cd-a876-6acc0586533d'
 web_api_key = 'qXhpBKFkndWWGYQ2'
 web_api_secret = 'dSccqQmtaPc2xB68GD6A7KBgpfRhHJkFe5AchGShbDGzyn8H8ThjPspCq6Yh8cTz'

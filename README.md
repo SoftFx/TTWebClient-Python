@@ -18,6 +18,7 @@ client = TickTraderWebClient(web_api_address, web_api_id, web_api_key, web_api_s
 public_trade_session = client.get_public_trade_session()
 print('TickTrader name: {0}'.format(public_trade_session['PlatformName']))
 print('TickTrader company: {0}'.format(public_trade_session['PlatformCompany']))
+print('TickTrader address: {0}'.format(public_trade_session['PlatformAddress']))
 print('TickTrader timezone offset: {0}'.format(public_trade_session['PlatformTimezoneOffset']))
 print('TickTrader session status: {0}'.format(public_trade_session['SessionStatus']))
 ```

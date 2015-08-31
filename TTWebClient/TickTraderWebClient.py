@@ -305,17 +305,17 @@ class TickTraderWebClient:
 
     def get_position(self, symbol):
         """
-        Get position by symbol
+        Get position by Id or symbol name
 
         Works only for net accounts!
 
         Keyword arguments:
-        symbol -- symbol name
+        id -- position Id or symbol name
         """
-        symbol = urllib.parse.quote_plus(urllib.parse.quote_plus(symbol))
+        symbol = urllib.parse.quote_plus(urllib.parse.quote_plus(pos_id))
         client = self.__create_http_client()
         method = 'GET'
-        url_relative = '/api/v1/position/{0}'.format(symbol)
+        url_relative = '/api/v1/position/{0}'.format(pos_id)
         url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
         client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
         response = json.loads(self.__decode_response(client.getresponse()))

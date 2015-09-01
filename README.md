@@ -2,11 +2,11 @@
 Python Web API client for TickTrader
 
 ## TickTrader Web API interactive documentation
-https://ttdemo.soft-fx.com:8443/api/doc/index
+https://ttdemowebapi.soft-fx.com:8443/api/doc/index
 
 ## Creating Web API client
 ```python
-web_api_address = "https://ttdemo.soft-fx.com:8443";
+web_api_address = "https://ttdemowebapi.soft-fx.com:8443";
 web_api_id = "1de621ca-e686-4ee2-92a5-45c87b4b3fe5";
 web_api_key = "czNhCcnK6ydePCHZ";
 web_api_secret = "J6Jxc2xPr8JyNpWtyEaCPYpkpJpsSQ38xb9AZNxBAGdtQrNDhQwf9mkWQygCKd6K";

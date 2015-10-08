@@ -23,7 +23,7 @@ def main():
         print('{0} tick: {1} {2}'.format(t['Symbol'], t['BestBid']['Price'], t['BestAsk']['Price']))
 
     tick = client.get_tick(ticks[0]['Symbol'])
-    print("{0} tick timestamp: {1}".format(tick['Symbol'], tick['Timestamp']))
+    print("{0} tick timestamp: {1}".format(tick[0]['Symbol'], tick[0]['Timestamp']))
 
 
 if __name__ == '__main__':

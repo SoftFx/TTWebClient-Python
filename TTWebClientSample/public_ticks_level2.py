@@ -20,8 +20,8 @@ def main():
         print('{0} level2 book depth: {1}'.format(t['Symbol'], max(len(t['Bids']), len(t['Asks']))))
 
     tick_level2 = client.get_public_tick_level2(ticks_level2[0]['Symbol'])
-    print("{0} level2 book depth: {1}".format(tick_level2['Symbol'],
-                                              max(len(tick_level2['Bids']), len(tick_level2['Asks']))))
+    print("{0} level2 book depth: {1}".format(tick_level2[0]['Symbol'],
+                                              max(len(tick_level2[0]['Bids']), len(tick_level2[0]['Asks']))))
 
 
 if __name__ == '__main__':

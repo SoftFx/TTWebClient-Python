@@ -23,7 +23,7 @@ def main():
         print('Symbol: {0}'.format(s['Symbol']))
 
     symbol = client.get_symbol(symbols[0]['Symbol'])
-    print("{0} symbol precision: {1}".format(symbol['Symbol'], symbol['Precision']))
+    print("{0} symbol precision: {1}".format(symbol[0]['Symbol'], symbol[0]['Precision']))
 
 
 if __name__ == '__main__':

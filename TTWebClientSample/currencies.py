@@ -23,7 +23,7 @@ def main():
         print('Currency: {0}'.format(c['Name']))
 
     currency = client.get_currency(currencies[0]['Name'])
-    print("{0} currency precision: {1}".format(currency['Name'], currency['Precision']))
+    print("{0} currency precision: {1}".format(currency[0]['Name'], currency[0]['Precision']))
 
 
 if __name__ == '__main__':

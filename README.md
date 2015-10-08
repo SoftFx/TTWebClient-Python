@@ -34,7 +34,7 @@ for c in currencies:
     print('Currency: {0}'.format(c['Name']))                                        
                                                                                     
 currency = client.get_public_currency(currencies[0]['Name'])                        
-print("{0} currency precision: {1}".format(currency['Name'], currency['Precision']))
+print("{0} currency precision: {1}".format(currency[0]['Name'], currency[0]['Precision']))
 
 ```
 
@@ -46,7 +46,7 @@ for s in symbols:
     print('Symbol: {0}'.format(s['Symbol']))                                    
                                                                                 
 symbol = client.get_public_symbol(symbols[0]['Symbol'])                         
-print("{0} symbol precision: {1}".format(symbol['Symbol'], symbol['Precision']))
+print("{0} symbol precision: {1}".format(symbol[0]['Symbol'], symbol[0]['Precision']))
 
 ```
 
@@ -58,7 +58,7 @@ for t in ticks:
     print('{0} tick: {1} {2}'.format(t['Symbol'], t['BestBid']['Price'], t['BestAsk']['Price']))
                                                                                                 
 tick = client.get_public_tick(ticks[0]['Symbol'])                                               
-print("{0} tick timestamp: {1}".format(tick['Symbol'], tick['Timestamp']))                      
+print("{0} tick timestamp: {1}".format(tick[0]['Symbol'], tick[0]['Timestamp']))                      
 
 ```
 
@@ -70,8 +70,8 @@ for t in ticks_level2:
     print('{0} level2 book depth: {1}'.format(t['Symbol'], max(len(t['Bids']), len(t['Asks']))))   
                                                                                                    
 tick_level2 = client.get_public_tick_level2(ticks_level2[0]['Symbol'])                             
-print("{0} level2 book depth: {1}".format(tick_level2['Symbol'],                                   
-                                          max(len(tick_level2['Bids']), len(tick_level2['Asks']))))
+print("{0} level2 book depth: {1}".format(tick_level2[0]['Symbol'],                                   
+                                          max(len(tick_level2[0]['Bids']), len(tick_level2[0]['Asks']))))
 
 ```
 

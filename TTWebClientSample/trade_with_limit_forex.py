@@ -42,6 +42,5 @@ def main():
         # Cancel limit order
         client.cancel_trade(limit['Id'])
 
-
 if __name__ == '__main__':
     main()

@@ -405,6 +405,16 @@ class TickTraderWebClient:
         """
         Cancel existing pending trade
 
+        Return values:
+            204 Ok. No content.
+            400 Bad Request. The request could not be understood by the server due to malformed syntax.
+            401 Unauthorized. The request requires user authentication.
+            402 Payment Required. Not enough money for the operation.
+            403 Forbidden. The request is forbidden due to limited access rights.
+            404 Not Found. Required trade was not found.
+            410 Gone. Off quotes or dealer reject.
+            500 Internal Server Error. The server encountered an unexpected condition which prevented it from fulfilling the request.
+
         Keyword arguments:
         trade_id -- trade Id to cancel
         """
@@ -413,10 +423,21 @@ class TickTraderWebClient:
         url_relative = '/api/v1/trade?type=Cancel&id={0}'.format(trade_id)
         url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
         client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
+        return client.getresponse().status
 
     def close_trade(self, trade_id, amount=None):
         """
         Close existing market trade
+
+        Return values:
+            204 Ok. No content.
+            400 Bad Request. The request could not be understood by the server due to malformed syntax.
+            401 Unauthorized. The request requires user authentication.
+            402 Payment Required. Not enough money for the operation.
+            403 Forbidden. The request is forbidden due to limited access rights.
+            404 Not Found. Required trade was not found.
+            410 Gone. Off quotes or dealer reject.
+            500 Internal Server Error. The server encountered an unexpected condition which prevented it from fulfilling the request.
 
         Keyword arguments:
         trade_id -- trade Id to close
@@ -430,10 +451,21 @@ class TickTraderWebClient:
             url_relative = '/api/v1/trade?type=Close&id={0}&amount={1}'.format(trade_id, amount)
         url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
         client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
+        return client.getresponse().status
 
     def close_by_trade(self, trade_id, by_trade_id):
         """
         Close existing market trade by another one
+
+        Return values:
+            204 Ok. No content.
+            400 Bad Request. The request could not be understood by the server due to malformed syntax.
+            401 Unauthorized. The request requires user authentication.
+            402 Payment Required. Not enough money for the operation.
+            403 Forbidden. The request is forbidden due to limited access rights.
+            404 Not Found. Required trade was not found.
+            410 Gone. Off quotes or dealer reject.
+            500 Internal Server Error. The server encountered an unexpected condition which prevented it from fulfilling the request.
 
         Keyword arguments:
         trade_id -- trade Id to close
@@ -444,6 +476,7 @@ class TickTraderWebClient:
         url_relative = '/api/v1/trade?type=CloseBy&id={0}&byid={1}'.format(trade_id, by_trade_id)
         url_absolute = 'https://{0}{1}'.format(self.__web_api_address, url_relative)
         client.request(method, url_relative, None, self.__get_http_hmac_headers(method, url_absolute, None))
+        return client.getresponse().status
 
     def get_trade_history(self, request):
         """

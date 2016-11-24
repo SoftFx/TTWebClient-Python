@@ -121,6 +121,28 @@ class TickTraderWebClient:
         response = json.loads(self.__decode_response(client.getresponse()))
         return response
 
+    def get_public_all_tickers(self):
+        """
+        Get list of all available public symbol statistics
+        """
+        client = self.__create_http_client()
+        client.request('GET', '/api/v1/public/ticker', None, self.__get_http_public_headers())
+        response = json.loads(self.__decode_response(client.getresponse()))
+        return response
+
+    def get_public_ticker(self, symbol):
+        """
+        Get public symbol statistics
+
+        Keyword arguments:
+        symbol -- symbol name
+        """
+        symbol = urllib.parse.quote_plus(urllib.parse.quote_plus(symbol))
+        client = self.__create_http_client()
+        client.request('GET', '/api/v1/public/ticker/{0}'.format(symbol), None, self.__get_http_public_headers())
+        response = json.loads(self.__decode_response(client.getresponse()))
+        return response
+
     def get_account(self):
         """
         Get account information
